@@ -1,3 +1,4 @@
+//Written December 26 2018 by Declan Kinsella
 window.onload = function(){
 
 		var messengerGame = document.getElementsByClassName('_3_om _3cpq'), i;
