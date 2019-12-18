@@ -21,6 +21,7 @@ chrome.tabs.onUpdated.addListener(
 
 
 function send(tab, newUrl){
+	console.log("The tab function did something lol")
 	chrome.tabs.sendMessage(tab, {
 	   	url: newUrl
 	});

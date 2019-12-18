@@ -2,31 +2,56 @@
 	"manifest_version": 2,
 	"name": "Big Fish Blocker",
 	"description": "Hides facebook messenger game messages",
-	"version": "1.2",
-	"icons": {"16": "logo-16.png",
-           "48": "logo-48.png",
-          "128": "logo-128.png" },
-
-	"content_scripts":[
+	"version": "1.5",
+	"icons": {
+		"16": "logo-16.png",
+		"48": "logo-48.png",
+		"128": "logo-128.png"
+	},
+	"content_scripts": [
 		{
-		"matches": ["*://*.facebook.com/*"],
-		"exclude_matches": ["*://*.facebook.com/*"],
-		"run_at": "document_end",
-		"js": ["facebook.js"]
+			"matches": [
+				"*://*.facebook.com/*"
+			],
+			"exclude_matches": [
+				"*://*.facebook.com/messages/*"
+			],
+			"run_at": "document_end",
+			"js": [
+				"homepage.js"
+			]
 		},
 		{
-		"matches": ["*://*.facebook.com/messages/*", "*://*.messenger.com/*"],
-		"run_at": "document_end",
-		"js": ["facebookMessages.js"]
+			"matches": [
+				"*://*.facebook.com/messages/*",
+				"*://*.messenger.com/*"
+			],
+			"run_at": "document_end",
+			"js": [
+				"messenger.js"
+			]
 		}
 	],
+	"browser_action":{
+		"default_icon" : "logo-16.png",
+		"default_popup" : "popup.html",
+		"default_title" : "Preferences"
+	}
 
+	,
 	"background": {
-		"scripts": ["background.js"]
+		"scripts": [
+			"background.js"
+		]
 	},
+	"storage":{
+		"managed_schema" : "schema.json"
 
-	"permissions":[
-		"*://www.facebook.com/*", "*://www.messenger.com/*", "tabs"
+	},
+	"permissions": [
+		"*://www.facebook.com/*",
+		"*://www.messenger.com/*",
+		"tabs",
+		"storage"
 	]
-
 }
